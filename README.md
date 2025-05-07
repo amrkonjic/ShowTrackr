@@ -1,36 +1,33 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# ShowTrackr
 
-First, run the development server:
+ShowTrackr is a modern Next.js application for discovering TV shows, powered by the free [TVmaze API](https://www.tvmaze.com/api). The app allows users to browse popular series, view detailed show information, explore episodes and cast, and manage a list of favorite shows.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Browse trending TV shows (e.g., latest or top-rated)
+- Detailed show pages (poster, title, genres, rating, summary, etc.)
+- Episode list and cast for each show
+- Add/remove shows to/from favorites
+- View saved favorite shows in a responsive grid
+- Custom API routes for managing favorites (GET, POST, DELETE)
+- Basic SEO optimization
+- Global loading and 404 error pages
+- Production deployment via Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technologies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js 14](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TVmaze API](https://www.tvmaze.com/api)
+- [Vercel](https://vercel.com/) for production hosting
 
-## Learn More
+## 📦 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/amrkonjic/ShowTrackr.git
+2. npm run dev
+3. open http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
