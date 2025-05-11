@@ -13,7 +13,7 @@ export default async function SeriesDetails({ params }){
 
     return(
         <main className="flex flex-col items-center">
-            <h1 className="text-2xl font-bold p-10">{data.name}</h1>
+            
             <div className="flex flex-row content-center">
                 <Image className="m-10"
                     src={data.image.original}
