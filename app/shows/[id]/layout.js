@@ -13,7 +13,7 @@ export default async function ShowsLayout({ children, params }) {
 
     return (
         <main className='bg-gradient-to-b from-gray-800 to-black text-white flex flex-col items-center'>
-            <h1 className="text-2xl font-bold p-10">{data.name}</h1>
+            <h1 className="text-3xl font-bold p-10">{data.name}</h1>
 
             <div>{children}</div>
 

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Episodes( {params} ){
     const {id} = await params;
@@ -26,7 +27,7 @@ export default async function Episodes( {params} ){
                            <h2 className="text-2xl font-bold ml-14 mr-14"> Season {key}</h2>
                            <div className="flex flex-row flex-wrap gap-6 ml-14 mr-14 mb-16 justify-start">
                                 {value.map(episode => (
-                                    <div key={episode.id} >
+                                    <Link key={episode.id} href={`/shows/${id}/episodes/${episode.id}`}>
                                         <Image 
                                             src={episode.image.medium}
                                             alt={`${episode.name} image`}
@@ -34,7 +35,7 @@ export default async function Episodes( {params} ){
                                             height={220}
                                         />
                                         <p>season {episode.season}, episode {episode.number}</p>
-                                    </div>
+                                    </Link>
                                 ))}
                            </div>
                             
