@@ -22,10 +22,10 @@ export default async function ShowsLayout({ children, params }) {
                     <Image src="/menu.png" alt="actor icon" width={20} height={20}></Image>
                     <p>Episodes</p>
                 </Link>
-                <div className="p-4 flex flex-col items-center">
+                <Link className="p-4 flex flex-col items-center" href={`/shows/${id}/cast`}>
                     <Image src="/drama.png" alt="actor icon" width={20} height={20}></Image>
                     <p>Cast</p>
-                </div>
+                </Link>
                 <div className="p-4 flex flex-col items-center">
                     <Image src="/list.png" alt="actor icon" width={20} height={20}></Image>
                     <p>Favorites</p>
