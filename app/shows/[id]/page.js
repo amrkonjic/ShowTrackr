@@ -10,27 +10,28 @@ export default async function SeriesDetails({ params }){
     }
     const data = await res.json();
     
+    // function that removes tags from fetched html content
+    const stripHtml = (html) => html.replace(/<[^>]+>/g, '');
 
     return(
         <main className="flex flex-col items-center">
-            
-            <div className="flex flex-row content-center">
-                <Image className="m-10"
+            <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl gap-6">
+                <Image className="w-full max-w-[300px] h-auto object-cover m-4 sm:max-w-[200px] md:max-w-[300px]"
                     src={data.image.original}
                     alt={`${data.name} image`}
                     width={300}
                     height={500}
+                    priority={true}
                 />
                 <div className="m-10 gap-14 flex flex-col content-between">
                     <p>Rating: {data.rating.average} ⭐</p>
                     <p>Language: {data.language}</p>
-                    <p>Genres: {data.genres}</p>
-                    <p>Summary: {data.summary}</p>
+                    <p>Genres: {data.genres.join(", ")}</p>
+                    <p>Summary: {stripHtml(data.summary)}</p>
                     {data.officialSite && <Link href={`${data.officialSite}`}>Check the offical site: {data.officialSite}</Link>}
                 </div>
             </div>
-            
-            
+
         </main>
     )
 }
