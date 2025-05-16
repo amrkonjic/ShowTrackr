@@ -25,10 +25,10 @@ export default async function ShowsLayout({ children, params }) {
                     <Image src="/drama.png" alt="actor icon" width={20} height={20}></Image>
                     <p>Cast</p>
                 </Link>
-                <div className="p-4 flex flex-col items-center hover:bg-violet-500 rounded-r-md">
+                <Link className="p-4 flex flex-col items-center hover:bg-violet-500 rounded-r-md" href={"/shows/favorites"}>
                     <Image src="/list.png" alt="actor icon" width={20} height={20}></Image>
                     <p>Favorites</p>
-                </div>
+                </Link>
             </section>
 
             <div>{children}</div>
