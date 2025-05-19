@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "@/components/FavoriteButton";
 import { notFound } from "next/navigation";
+import DeleteButton from "@/components/DeleteButton";
 
 export default async function SeriesDetails({ params }){
     const {id} = await params;
@@ -18,7 +19,7 @@ export default async function SeriesDetails({ params }){
 
     const data = await showRes.json();
     const { favorites } = await favRes.json();
-    const saved = favorites.includes(data.name);
+    const saved = favorites.some(fav => fav.name === data.name);
 
     // function that removes tags from fetched html content
     const stripHtml = (html) => html.replace(/<[^>]+>/g, '');
@@ -38,9 +39,9 @@ export default async function SeriesDetails({ params }){
                     <p>Language: {data.language}</p>
                     <p>Genres: {data.genres.join(", ")}</p>
                     <p>Summary: {stripHtml(data.summary)}</p>
-                    {data.officialSite && <Link href={`${data.officialSite}`}>Check the offical site: {data.officialSite}</Link>}
+                    {data.officialSite && <Link href={`${data.officialSite}`}>Check the offical site: {data.officialSite}</Link>}                
+                    <FavoriteButton name={data.name} initialSaved={saved} image={data.image.original} rating={data.rating.average} id={data.id}/>
                 </div>
-                <FavoriteButton name={data.name} initialSaved={saved} image={data.image.original} rating={data.rating.average} id={data.id}/>
             </div>
 
         </main>
