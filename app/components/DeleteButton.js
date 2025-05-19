@@ -2,8 +2,9 @@
 
 
 import { useState, useTransition } from "react";
+import Image from "next/image";
 
-export default function DeleteButton({id}){
+export default function DeleteButton({id, onDelete}){
 
     const [deleted, setDeleted] = useState(false);
     const [isPending, startTransition] = useTransition();
@@ -15,7 +16,10 @@ export default function DeleteButton({id}){
               });
             if (res.ok) {
                 const data = await res.json();
-                if (data.ok) setDeleted(true);
+                if (data.ok){
+                    setDeleted(true);
+                    onDelete();
+                }
                 } else {
                 console.error("Failed to delete:", await res.text());
             }
@@ -26,10 +30,11 @@ export default function DeleteButton({id}){
         <button
           disabled={deleted || isPending}
           onClick={removeFavorite}
-          className={`px-3 py-1 rounded text-white ${
-            deleted ? "bg-green-600" : "bg-amber-500 hover:bg-amber-600"
+          className={`flex flex-row gap-4 justify-between px-3 py-1 rounded text-black ${
+                    deleted ? "bg-rose-500" : "bg-indigo-500 hover:bg-indigo-700"
           }`}
         >
+          <Image src="/delete.png" alt="delete icon" width={20} height={20} />
           {deleted ? "removed!" : isPending ? "removing..." : "remove from favorites"}
         </button>
       );

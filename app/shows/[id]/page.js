@@ -39,7 +39,7 @@ export default async function SeriesDetails({ params }){
                     <p>Language: {data.language}</p>
                     <p>Genres: {data.genres.join(", ")}</p>
                     <p>Summary: {stripHtml(data.summary)}</p>
-                    {data.officialSite && <Link href={`${data.officialSite}`}>Check the offical site: {data.officialSite}</Link>}                
+                    {data.officialSite && <Link href={`${data.officialSite}`} className="hover:text-violet-500">Check the offical site: {data.officialSite}</Link>}                
                     <FavoriteButton name={data.name} initialSaved={saved} image={data.image.original} rating={data.rating.average} id={data.id}/>
                 </div>
             </div>

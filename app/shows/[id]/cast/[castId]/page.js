@@ -26,7 +26,7 @@ export default async function Actor( {params} ){
             </div>
             <div className="flex flex-col items-center gap-6 mt-8 bg-indigo-950 p-4 border-solid border-white border-2 rounded-md shadow-md shadow-indigo-500/50">
                 Shows:{data._embedded.castcredits.map(castcredit => (
-                    <div key={castcredit._links.show.name} className="flex flex-col gap-2 w-full items-center bg-violet-950 p-4 rounded-md border-b shadow-md shadow-indigo-100/50 ">
+                    <div key={castcredit._links.show.name} className="flex flex-col gap-2 w-full items-center bg-violet-950 p-4 rounded-md border-b shadow-md shadow-indigo-100/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ">
                         <p>Character: {castcredit._links.character.name}</p>
                         <p>Show: {castcredit._links.show.name}</p>
                     </div>
