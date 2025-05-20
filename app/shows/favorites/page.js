@@ -7,21 +7,41 @@ export default async function Favorites(){
 
     return(
         <main className="flex flex-col justify-center items-center">
-            <h1 className="text-2xl font-bold p-4">Your favorite series</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto max-w-[1200px] gap-16">
-            {data.favorites.map(show => (
-                <div key={show.id} className="w-full sm:w-[220px] bg-indigo-950 p-4 mt-10 border-solid border-white border-2 rounded-md shadow-md shadow-indigo-500/50 flex flex-col items-center gap-2 transition-all duration-300 transform scale-100 hover:scale-105 hover:shadow-lg">
-                    <Image 
-                        src={show.image}
-                        alt={`${show.name} image`}
-                        width={150}
-                        height={220}
+            <h1 className="text-3xl font-bold p-8">Your favorite series</h1>
+            {data.favorites.length > 0 ?
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto max-w-[1200px] gap-16">
+                {data.favorites.map(show => (
+                    <div key={show.id} className="w-full sm:w-[220px] bg-indigo-950 p-4 mt-10 border-solid border-white border-2 rounded-md shadow-md shadow-indigo-500/50 flex flex-col items-center gap-2 transition-all duration-300 transform scale-100 hover:scale-105 hover:shadow-lg">
+                        <Image 
+                            src={show.image}
+                            alt={`${show.name} image`}
+                            width={150}
+                            height={220}
+                        />
+                        <Link href={`/shows/${show.id}`}>{show.name}</Link>
+                        <p>{show.rating}⭐</p>
+                    </div>
+                )) } </div>
+                :
+                <div className="flex flex-col items-center justify-center w-3/4 max-w-3xl bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 shadow-xl mt-10 mx-auto">
+                    <Image
+                        className="w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] h-auto object-contain mb-6"
+                        src="/empty.png"
+                        alt="empty favorites image"
+                        width={350}
+                        height={250}
+                        priority={true}
                     />
-                    <Link href={`/shows/${show.id}`}>{show.name}</Link>
-                    <p>{show.rating}⭐</p>
+                    <div className="text-center px-2 sm:px-4">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">
+                            Your favorites list is empty
+                        </h2>
+                        <p className="text-sm sm:text-base md:text-lg text-violet-100 max-w-md mx-auto">
+                            You haven’t added any favorites yet. Browse shows and mark your favorites to see them here.
+                        </p>
+                    </div>
                 </div>
-            ))}
-            </div>
+            }
         </main>
     )
 }
