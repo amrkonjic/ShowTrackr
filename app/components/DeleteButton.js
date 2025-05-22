@@ -30,8 +30,8 @@ export default function DeleteButton({id, onDelete}){
         <button
           disabled={deleted || isPending}
           onClick={removeFavorite}
-          className={`flex flex-row gap-4 justify-between px-3 py-1 rounded text-white ${
-                    deleted ? "bg-rose-500" : "bg-indigo-600 hover:bg-indigo-800"
+          className={`flex flex-row items-center justify-center gap-2 px-4 py-2 rounded text-white text-sm sm:text-base max-w-xs w-full sm:w-auto text-center ${
+            deleted ? "bg-rose-500" : "bg-indigo-600 hover:bg-indigo-800"
           }`}
         >
           <Image src="/delete.png" alt="delete icon" width={20} height={20} />

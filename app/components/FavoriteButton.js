@@ -36,12 +36,12 @@ export default function FavoriteButton( {name, image, rating, id, initialSaved =
     }
 
     return(
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-3">
             <button
-                disabled = {saved || isPending}
+                disabled={saved || isPending}
                 onClick={addFavorite}
-                className={`flex flex-row gap-4 justify-between px-3 py-1 rounded text-white ${
-                    saved ? "bg-rose-500" : "bg-indigo-600 hover:bg-indigo-800"
+                className={`flex flex-row items-center justify-center gap-2 px-4 py-2 rounded text-white text-sm sm:text-base max-w-xs w-full sm:w-auto text-center ${
+                saved ? "bg-rose-500" : "bg-indigo-600 hover:bg-indigo-800"
                 }`}
             >
                 <Image src="/heart.png" alt="love icon" width={20} height={20} />

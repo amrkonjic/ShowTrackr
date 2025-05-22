@@ -36,7 +36,7 @@ export default function SearchBar() {
   }, [search]);
 
   return (
-    <div className="relative w-64 m-10 max-w-xs sm:max-w-md">
+    <div className="relative w-64 m-5 max-w-xs sm:max-w-md">
       <input
         type="text"
         placeholder="Search shows..."
