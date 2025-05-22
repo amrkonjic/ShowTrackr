@@ -40,11 +40,11 @@ export default function FavoriteButton( {name, image, rating, id, initialSaved =
             <button
                 disabled = {saved || isPending}
                 onClick={addFavorite}
-                className={`flex flex-row gap-4 justify-between px-3 py-1 rounded text-black ${
-                    saved ? "bg-rose-500" : "bg-indigo-500 hover:bg-indigo-700"
+                className={`flex flex-row gap-4 justify-between px-3 py-1 rounded text-white ${
+                    saved ? "bg-rose-500" : "bg-indigo-600 hover:bg-indigo-800"
                 }`}
             >
-                <Image src="/love.png" alt="love icon" width={20} height={20} />
+                <Image src="/heart.png" alt="love icon" width={20} height={20} />
                 {saved ? "Saved" : isPending ? "Saving..." : "Add to favorite"}
             </button>
             {/* show delete button only if show is added to favorites */}

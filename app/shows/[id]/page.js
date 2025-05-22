@@ -28,19 +28,19 @@ export default async function SeriesDetails({ params }){
         <main className="flex flex-col items-center">
             <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl gap-6">
                 <Image className="w-full max-w-[300px] h-auto object-cover m-4 sm:max-w-[200px] md:max-w-[300px]"
-                    src={data.image.original}
+                    src={data.image?.original || "/empty.png"}
                     alt={`${data.name} image`}
                     width={300}
                     height={500}
                     priority={true}
                 />
                 <div className="m-10 gap-14 flex flex-col content-between">
-                    <p>Rating: {data.rating.average} ⭐</p>
+                    <p>Rating: {data.rating.average ? `${data.rating.average} ⭐` : "no rating available" }</p>
                     <p>Language: {data.language}</p>
                     <p>Genres: {data.genres.join(", ")}</p>
                     <p>Summary: {stripHtml(data.summary)}</p>
                     {data.officialSite && <Link href={`${data.officialSite}`} className="hover:text-violet-500">Check the offical site: {data.officialSite}</Link>}                
-                    <FavoriteButton name={data.name} initialSaved={saved} image={data.image.original} rating={data.rating.average} id={data.id}/>
+                    <FavoriteButton name={data.name} initialSaved={saved} image={data.image?.original || "/empty.png"} rating={data.rating.average} id={data.id}/>
                 </div>
             </div>
 
