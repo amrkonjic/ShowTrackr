@@ -14,7 +14,7 @@ export default async function Home(){
     return(
         <main className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold m-20 text-indigo-100">ShowTrackr</h1>
-            <h2 className="text-2xl pb-20 text-indigo-100">Binge smarter, not harder — track your favorite shows in one place!</h2>
+            <h2 className="text-2xl pb-20 text-indigo-100 mx-10">Binge smarter, not harder — track your favorite shows in one place!</h2>
 
             <div>
                 <h3 className="text-2xl font-bold p-4 text-indigo-100">Popular series🔥</h3>

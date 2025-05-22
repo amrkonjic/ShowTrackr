@@ -36,13 +36,13 @@ export default function SearchBar() {
   }, [search]);
 
   return (
-    <div className="relative w-64 m-10">
+    <div className="relative w-64 m-10 max-w-xs sm:max-w-md">
       <input
         type="text"
         placeholder="Search shows..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="p-2 rounded bg-indigo-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+        className="p-2 rounded bg-indigo-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full max-w-xs sm:max-w-md"
       />
 
       {search.length > 1 && (
