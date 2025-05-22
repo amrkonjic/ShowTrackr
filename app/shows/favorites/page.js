@@ -1,28 +1,50 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Favorites(){
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/favorites`);
-    const data = await res.json();
+export default function Favorites() {
+    const [favorites, setFavorites] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    return(
+    useEffect(() => {
+        const fetchFavorites = async () => {
+            try {
+                const res = await fetch("/api/favorites");
+                const data = await res.json();
+                setFavorites(data.favorites || []);
+            } catch (error) {
+                console.error("Failed to fetch favorites:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFavorites();
+    }, []);
+
+    return (
         <main className="flex flex-col justify-center items-center">
             <h1 className="text-3xl font-bold p-8">Your favorite series</h1>
-            {data.favorites.length > 0 ?
+            {loading ? (
+                <p>Loading...</p>
+            ) : favorites.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto max-w-[1200px] gap-16">
-                {data.favorites.map(show => (
-                    <div key={show.id} className="w-full sm:w-[220px] bg-indigo-950 p-4 mt-10 border-solid border-white border-2 rounded-md shadow-md shadow-indigo-500/50 flex flex-col items-center gap-2 transition-all duration-300 transform scale-100 hover:scale-105 hover:shadow-lg">
-                        <Image 
-                            src={show.image}
-                            alt={`${show.name} image`}
-                            width={150}
-                            height={220}
-                        />
-                        <Link href={`/shows/${show.id}`}>{show.name}</Link>
-                        <p>{show.rating}⭐</p>
-                    </div>
-                )) } </div>
-                :
+                    {favorites.map((show) => (
+                        <div key={show.id} className="w-full sm:w-[220px] bg-indigo-950 p-4 mt-10 border-solid border-white border-2 rounded-md shadow-md shadow-indigo-500/50 flex flex-col items-center gap-2 transition-all duration-300 transform scale-100 hover:scale-105 hover:shadow-lg">
+                            <Image 
+                                src={show.image}
+                                alt={`${show.name} image`}
+                                width={150}
+                                height={220}
+                            />
+                            <Link href={`/shows/${show.id}`}>{show.name}</Link>
+                            <p>{show.rating}⭐</p>
+                        </div>
+                    ))}
+                </div>
+            ) : (
                 <div className="flex flex-col items-center justify-center w-3/4 max-w-3xl bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 shadow-xl mt-10 mx-auto">
                     <Image
                         className="w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] h-auto object-contain mb-6"
@@ -41,7 +63,7 @@ export default async function Favorites(){
                         </p>
                     </div>
                 </div>
-            }
+            )}
         </main>
-    )
+    );
 }
