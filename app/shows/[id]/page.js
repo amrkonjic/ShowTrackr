@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "@/components/FavoriteButton";
-import { notFound } from "next/navigation";
-import DeleteButton from "@/components/DeleteButton";
+
 
 export default async function SeriesDetails({ params }){
     const {id} = await params;

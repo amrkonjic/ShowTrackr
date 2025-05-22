@@ -6,7 +6,7 @@ import Image from "next/image";
 
 
 export default function FavoriteButton( {name, image, rating, id, initialSaved = false} ){
-    const [saved, setSaved] = useState(false);
+    const [saved, setSaved] = useState(initialSaved);
     const [isPending, startTransition] = useTransition();
 
     // fetching favorites from the API and updates the 'saved' state if the current series is in the favorites
