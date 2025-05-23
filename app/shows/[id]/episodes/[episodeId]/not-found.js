@@ -1,0 +1,26 @@
+"use client"; // važno!
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+export default function NotFound() {
+  const router = useRouter();
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-gray-800 to-black">
+      <Image 
+        src={"/notFoundEp.png"}
+        alt={"not found image"}
+        width={350}
+        height={350}
+      />
+      <h2 className="text-white text-lg font-medium">Episode not found.</h2>
+      <button
+        onClick={() => router.back()}
+        className="bg-indigo-950 p-2 m-5 border-solid border-indigo-500 border-2 rounded-md shadow-md shadow-indigo-500/50 hover:bg-indigo-800"
+      >
+        Go back
+      </button>
+    </div>
+  );
+}
