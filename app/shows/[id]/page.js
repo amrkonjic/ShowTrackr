@@ -31,7 +31,7 @@ export default async function SeriesDetails({ params }){
                     alt={`${data.name} image`}
                     width={300}
                     height={500}
-                    priority={true}
+                    priority
                 />
                 <div className="m-10 gap-14 flex flex-col content-between">
                     <p>Rating: {data.rating?.average ? `${data.rating.average} ⭐` : "no rating available" }</p>

@@ -8,7 +8,6 @@ export const metadata = {
     description: 'ShowTrackr',
   }
 
-
 export default function RootLayout({ children }) {
     return (
       <html lang="hr">
@@ -19,8 +18,9 @@ export default function RootLayout({ children }) {
               className="my-2"
               src="/logo.png" 
               alt="logo" 
-              width={200} 
-              height={180}
+              width={180} 
+              height={160}
+              priority
             />
           </Link>
 

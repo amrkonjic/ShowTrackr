@@ -1,3 +1,31 @@
+/* This is home page of application. It is designed as server-side component so majority of content (title, and section with popular series) is
+ renered on server and part that is in charge of infinite scroll is implemented as specific component LoadMoreShows (client-side). */
+
+export const metadata = {
+  title: 'ShowTrackr | Prati svoje omiljene serije',
+  description: 'Prati najpopularnije serije na jednom mestu! Otkrij najbolje ocenjene serije i koristi beskonačni scroll za još više zabave.',
+  openGraph: {
+    title: 'ShowTrackr | Prati svoje omiljene serije',
+    description: 'Otkrij najbolje serije sa visokim ocenama. ShowTrackr ti omogućava da pratiš omiljene naslove i nikad ne propustiš novu epizodu.',
+    url: 'https://localhost:3000',
+    siteName: 'ShowTrackr',
+    images: [
+      {
+        width: 1200,
+        height: 630,
+        alt: 'ShowTrackr homepage preview',
+      },
+    ],
+    locale: 'sr_RS',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ShowTrackr | Prati svoje omiljene serije',
+    description: 'Otkrij i prati najpopularnije TV serije!'
+  },
+};
+
 import Image from 'next/image';
 import Link from 'next/link';
 import LoadMoreShows from '@/components/LoadMoreShows';
@@ -17,12 +45,12 @@ export default async function Home() {
         Binge smarter, not harder — track your favorite shows in one place!
       </h2>
 
-      <button className="bg-indigo-800 border-2 border-indigo-500 text-indigo-100 px-6 py-2 mb-20 rounded-md hover:bg-indigo-700 transition-colors">
+      <button className="bg-indigo-800 border-2 border-indigo-500 text-indigo-100 font-bold px-8 py-4 mb-20 rounded-md hover:bg-indigo-700 transition-colors">
         <a href="#explore-more">Explore</a>
       </button>
 
       <div>
-        <h3 className="text-3xl border-b-2 font-bold p-4 text-indigo-100">Popular series🔥</h3>
+        <h2 className="text-2xl border-b-2 font-bold p-4 text-indigo-100">Popular series🔥</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto p-10 gap-16 pb-10 min-h-screen bg-slate-700">
           {shows.map(show => (
             <div

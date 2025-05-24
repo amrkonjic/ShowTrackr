@@ -1,5 +1,6 @@
-
-
+/* Global loading page
+    inspired by StackOverflow: https://stackoverflow.com/questions/71685632/animated-svg-in-react
+*/
 export default function Loading(){
 
     return(

@@ -1,3 +1,5 @@
+/* Global not-found page */
+
 import Image from "next/image"
 import Link from "next/link"
 
