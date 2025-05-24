@@ -42,7 +42,7 @@ export default function SearchBar() {
         placeholder="Search shows..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="p-2 rounded bg-indigo-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full max-w-xs sm:max-w-md"
+        className="p-2 rounded bg-indigo-800 text-white placeholder-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full max-w-xs sm:max-w-md"
       />
 
       {search.length > 1 && (

@@ -34,7 +34,7 @@ export default async function SeriesDetails({ params }){
                     priority={true}
                 />
                 <div className="m-10 gap-14 flex flex-col content-between">
-                    <p>Rating: {data.rating.average ? `${data.rating.average} ⭐` : "no rating available" }</p>
+                    <p>Rating: {data.rating?.average ? `${data.rating.average} ⭐` : "no rating available" }</p>
                     <p>Language: {data.language}</p>
                     <p>Genres: {data.genres.join(", ")}</p>
                     <p>Summary: {stripHtml(data.summary)}</p>
