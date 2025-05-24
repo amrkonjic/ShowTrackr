@@ -43,6 +43,7 @@ export default function LoadMoreShows() {
   }, [page, hasMore, loading]);
 
   useEffect(() => {
+    const currentLoader = loaderRef.current;
     const observer = new IntersectionObserver(entries => {
       const first = entries[0];
       if (first.isIntersecting) {
@@ -50,13 +51,13 @@ export default function LoadMoreShows() {
       }
     });
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
+    if (currentLoader) {
+      observer.observe(currentLoader);
     }
 
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
+      if (currentLoader) {
+        observer.unobserve(currentLoader);
       }
     };
   }, [fetchMore]);
@@ -87,7 +88,6 @@ export default function LoadMoreShows() {
       </div>
 
       {loading && <p className="text-indigo-100 text-center mb-4">Loading...</p>}
-      {!hasMore && <p className="text-indigo-500 text-center mb-4">🎉 You've reached the end!</p>}
       <div ref={loaderRef} className="h-1" />
     </div>
   );
