@@ -45,7 +45,7 @@ export default function Favorites() {
                     ))}
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center w-3/4 max-w-3xl bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 shadow-xl mt-10 mx-auto">
+                <div className="flex flex-col items-center justify-center w-3/4 max-w-3xl bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 shadow-xl mt-10 mb-10 mx-auto">
                     <Image
                         className="w-full max-w-[200px] sm:max-w-[280px] md:max-w-[350px] h-auto object-contain mb-6"
                         src="/empty.png"

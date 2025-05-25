@@ -1,7 +1,12 @@
-
+// Error boundary component that displays a fallback UI when a rendering error occurs on the client side.
 "use client"; 
 
 import { useEffect } from "react";
+
+export const metadata = {
+  title: 'Error | ShowTrackr',
+  description: 'An unexpected error occurred while using ShowTrackr. Please try again.',
+};
 
 export default function Error({ error, reset }) {
     useEffect(() => {

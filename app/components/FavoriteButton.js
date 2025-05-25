@@ -8,16 +8,18 @@ import Image from "next/image";
 export default function FavoriteButton( {name, image, rating, id, initialSaved = false} ){
     const [saved, setSaved] = useState(initialSaved);
     const [isPending, startTransition] = useTransition();
-
+    
     // fetching favorites from the API and updates the 'saved' state if the current series is in the favorites
-    useEffect(() => {                       
+    useEffect(() => {                    
         fetch("/api/favorites")
           .then((res) => res.json())
           .then((data) => {
-            if (data.favorites?.some(fav => fav.name === name)) 
+            if (data.favorites?.some(fav => fav.name === name)){
               setSaved(true);
+            } else setSaved(false)
           });
       }, [name]);           // triggered on 'name' change
+
 
     async function addFavorite(){
         startTransition(async () => {
@@ -29,6 +31,7 @@ export default function FavoriteButton( {name, image, rating, id, initialSaved =
               if (res.ok) setSaved(true);
         });
     }
+
 
     // function that is called after removing show from favorites
     const handleDelete = () => {

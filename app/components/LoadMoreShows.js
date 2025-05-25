@@ -81,7 +81,7 @@ export default function LoadMoreShows() {
 
   return (
     <div className="flex flex-col items-start min-h-[100vh]">
-      <h2 id="explore-more" className="w-full text-3xl border-b-2 font-bold p-4 text-indigo-100">Explore more </h2>
+      <h2 id="explore-more" className="w-full text-2xl border-b-2 font-bold p-4 text-indigo-100">Explore more </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto p-10 gap-16 pb-10">
         {shows.map(show => (
           <Link href={`/shows/${show.id}`}

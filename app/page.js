@@ -2,12 +2,12 @@
  renered on server and part that is in charge of infinite scroll is implemented as specific component LoadMoreShows (client-side). */
 
 export const metadata = {
-  title: 'ShowTrackr | Prati svoje omiljene serije',
-  description: 'Prati najpopularnije serije na jednom mestu! Otkrij najbolje ocenjene serije i koristi beskonačni scroll za još više zabave.',
+  title: 'ShowTrackr | Track Your Favorite Series',
+  description: 'Stay up to date with the most popular TV shows! Discover top-rated series and enjoy infinite scrolling for endless entertainment.',
   openGraph: {
-    title: 'ShowTrackr | Prati svoje omiljene serije',
-    description: 'Otkrij najbolje serije sa visokim ocenama. ShowTrackr ti omogućava da pratiš omiljene naslove i nikad ne propustiš novu epizodu.',
-    url: 'https://localhost:3000',
+    title: 'ShowTrackr | Track Your Favorite Series',
+    description: 'Explore highly-rated TV shows with ShowTrackr. Never miss an episode of your favorite series again.',
+    url: 'https://localhost:3000', 
     siteName: 'ShowTrackr',
     images: [
       {
@@ -16,27 +16,28 @@ export const metadata = {
         alt: 'ShowTrackr homepage preview',
       },
     ],
-    locale: 'sr_RS',
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ShowTrackr | Prati svoje omiljene serije',
-    description: 'Otkrij i prati najpopularnije TV serije!'
+    title: 'ShowTrackr | Track Your Favorite Series',
+    description: 'Discover and follow the most popular TV shows — all in one place!',
   },
 };
+
 
 import Image from 'next/image';
 import Link from 'next/link';
 import LoadMoreShows from '@/components/LoadMoreShows';
 
 export default async function Home() {
-  const res = await fetch('https://api.tvmaze.com/shows?page=0');
-  const data = await res.json();
-  const shows = data
+  const res = await fetch('https://api.tvmaze.com/shows?page=0');       //fetch data from extern API
+  const data = await res.json();                            
+  const shows = data                                                    // filter data by average rate and sort them from higher rated to lower rated
     .filter(show => show.rating.average >= 8)
     .sort((a, b) => b.rating.average - a.rating.average)
-    .slice(0, 10);
+    .slice(0, 10);                          // take 10 best rated 
 
   return (
     <main className="flex flex-col items-center gap-2">
@@ -53,7 +54,7 @@ export default async function Home() {
         <h2 className="text-2xl border-b-2 font-bold p-4 text-indigo-100">Popular series🔥</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mx-auto p-10 gap-16 pb-10 min-h-screen bg-slate-700">
           {shows.map(show => (
-            <div
+            <Link href={`/shows/${show.id}`}
               key={show.id}
               className="w-full sm:w-[220px] bg-indigo-950 p-4 border-solid border-indigo-500 border-2 rounded-md shadow-md shadow-indigo-500/50 flex flex-col items-center gap-2 transition-all duration-300 transform scale-100 hover:scale-105 hover:shadow-lg"
             >
@@ -63,11 +64,11 @@ export default async function Home() {
                 width={150}
                 height={220}
               />
-              <Link href={`/shows/${show.id}`} className="hover:text-indigo-500">
+              <p className="hover:text-indigo-500">
                 {show.name}
-              </Link>
+              </p>
               <p>{show.rating.average}⭐</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
