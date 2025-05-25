@@ -1,3 +1,6 @@
+/**
+  This component displays the cast (actors and their characters) for a given TV show. It fetches both the cast data and the show data (used for the
+  hero banner image). Each cast member is displayed with an image, character name, and actor name (as a link to their details page). */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,17 +8,15 @@ import Link from "next/link";
 export default async function Cast( {params} ) {
     const {id} = await params;
 
-    // podaci o glumcima koji su glumili u određenoj seriji
+    // information about actors who starred in a particular series
     const resCast = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
     const dataCast = await resCast.json();
-    // podaci o seriji koji sluze za prikaz slike u hero sekciji
+    // data about the series used to display the image in the hero section
     const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
     const data = await res.json();
 
     return(
-
         <div className="flex flex-col min-h-screen w-full items-center gap-6">
-            
             <div className="w-full h-[400px] relative mx-auto">
                 <Image
                     src={data.image?.original}

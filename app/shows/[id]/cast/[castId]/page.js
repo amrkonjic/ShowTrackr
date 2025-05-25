@@ -1,8 +1,10 @@
+/* This component displays detailed information about a specific actor. It fetches actor data from the TVmaze API using the actor's ID (castId),
+   including embedded data about the shows they've been in (via cast credits). */
 import Image from "next/image";
 
 export default async function Actor( {params} ){
     const {castId} = await params;
-    const res = await fetch(`https://api.tvmaze.com/people/${castId}?embed=castcredits`);
+    const res = await fetch(`https://api.tvmaze.com/people/${castId}?embed=castcredits`);           // fetch actor data with embedded cast credits
     const data = await res.json();
 
 

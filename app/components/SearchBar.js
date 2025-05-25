@@ -1,5 +1,8 @@
 "use client";
 
+/* This component implement search bar, inspired by Stackoverflow but contains changes. 
+(https://stackoverflow.com/questions/76990541/search-bar-with-debounce-using-react-hooks)  */
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -15,7 +18,7 @@ export default function SearchBar() {
       return;
     }
 
-    // debounce search: wait 300ms after user stops typing
+    // debounce search: wait 300ms after user stops typing, also to prevent unnecessary API calls
     const timer = setTimeout(async () => {
       setLoading(true);
       try {

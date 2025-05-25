@@ -1,4 +1,7 @@
-
+/**
+  Layout component for the "Show" pages. This component fetches the main show details (like the name) using the show's ID. It renders a navigation 
+  section with links to different subpages of the show (back button, Episodes, Cast, Favorites) and displays any nested child routes passed as `children`.
+  The layout also includes a consistent visual style for all subpages. */
 import Image from "next/image";
 import Link from "next/link";
 import BackButton from "../../components/BackButton";

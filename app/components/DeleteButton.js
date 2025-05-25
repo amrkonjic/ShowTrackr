@@ -1,24 +1,25 @@
 "use client"
 
-
 import { useState, useTransition } from "react";
 import Image from "next/image";
 
-export default function DeleteButton({id, onDelete}){
+export default function DeleteButton({id, onDelete}){     // onDelete() is function that updates the parent component
 
-    const [deleted, setDeleted] = useState(false);
-    const [isPending, startTransition] = useTransition();
+    const [deleted, setDeleted] = useState(false);      // tracks whether the item has been deleted
+    const [isPending, startTransition] = useTransition();       // tracks if the async deletion is pending
 
     async function removeFavorite(){
+      // useTransition keeps the UI responsive during async work (because it needs to wait for response of server)
         startTransition(async () => {
             const res = await fetch(`/api/favorites?id=${id}`, {
                 method: "DELETE",
               });
+            // if response is OK, update state and call parent handler
             if (res.ok) {
                 const data = await res.json();
                 if (data.ok){
-                    setDeleted(true);
-                    onDelete();
+                    setDeleted(true);     // visually mark the item as deleted
+                    onDelete();         // notify parent to update its list
                 }
                 } else {
                 console.error("Failed to delete:", await res.text());

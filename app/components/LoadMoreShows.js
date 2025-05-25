@@ -3,7 +3,10 @@
 /* The LoadMoreShows component is designed to implement an infinite scroll feature. It is designed as client-side component because of 
   implementation of dynamic changes caused by users actions. It utilizes the IntersectionObserver API to detect when a loader element becomes 
   visible, triggering the fetchMore function to retrieve the next page of shows from the TVMaze API. The component manages state to prevent
-  duplicate data and ensures a smooth user experience by handling loading states and cleanup to avoid memory leaks. */
+  duplicate data and ensures a smooth user experience by handling loading states and cleanup to avoid memory leaks. 
+  inspired by: https://blog.devops.dev/implementing-infinite-scroll-in-next-js-a-complete-guide-0ce74d5eb57d
+               https://dev.to/easyvipin/reactjs-tutorial-infinite-scrolling-with-intersection-observer-kp3
+  */
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Image from 'next/image';

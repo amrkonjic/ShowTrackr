@@ -1,24 +1,30 @@
+/**
+  This component displays detailed information about a TV series. It fetches show data from the TVMaze API and the user's favorite list from a local API.
+ It checks if the current show is already saved as a favorite and passes that info to the FavoriteButton component. The show details (image, rating, genres, summary, etc.)
+ are then rendered along with a button to add or remove the show from favorites.*/
+
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "@/components/FavoriteButton";
 
 
 export default async function SeriesDetails({ params }){
-    const {id} = await params;
+    const {id} = await params;      // destructurize dynamic paramter id from parameter params who comes from next.js dynamic route (from structure of directories)
 
-    // fetching series data
+    // fetching series data from tvmaze API and using dynamic paramter for specific tv show
     const showFetch = fetch(`https://api.tvmaze.com/shows/${id}`);
-    // fetching favorites
+    // fetching favorites from internal API route and using enviroment variable because in production version localhost:300/api/favorites is not correct location so it is used env variable that which then adapts depending on where the code is run
     const favFetch = fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/favorites`, {
-        cache: "no-store"
+        cache: "no-store"       // user can frequently change list of favorites so it must not be cached because we want to always have the latest data
       });
 
-    // waiting for both of requests
+    // waiting for both of requests at the same time (Promise.all reduces waiting time)
     const [showRes, favRes] = await Promise.all([showFetch, favFetch]);
 
+    // data processing, the .json() method reads the response and converts it into a JavaScript object
     const data = await showRes.json();
     const { favorites } = await favRes.json();
-    const saved = favorites.some(fav => fav.name === data.name);
+    const saved = favorites.some(fav => fav.name === data.name);        // comparing the name of the current series with the names of all series in the favorites array and if any of series in array has the same name, return true
 
     // function that removes tags from fetched html content
     const stripHtml = (html) => html.replace(/<[^>]+>/g, '');

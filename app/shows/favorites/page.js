@@ -1,3 +1,5 @@
+/* Page used for the user's favorite TV series retrieved from internal /api/favorites */
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,8 +10,9 @@ export default function Favorites() {
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchFavorites = async () => {
+    // useEffect is used to retrive information as soon as component is mounted (loaded on the page)
+    useEffect(() => {                       //useEffect hook does not accept async functions directly because an async function always returns a Promise, which is not compatible with the expected return type of void or a cleanup function so async function is placed inside useEffect
+        const fetchFavorites = async () => {        // it is necessarily for function to be async because of waiting for data to be fetched
             try {
                 const res = await fetch("/api/favorites");
                 const data = await res.json();
@@ -22,7 +25,7 @@ export default function Favorites() {
         };
 
         fetchFavorites();
-    }, []);
+    }, []);         // empty dependency array because useEffect needs to be executed only once (when component is mounted)
 
     return (
         <main className="flex flex-col justify-center items-center">

@@ -1,27 +1,31 @@
+/**
+  This component displays a list of all episodes for a given TV show, grouped by season. It fetches episodes using the show's ID from the TVMaze 
+  API, organizes them by season using `reduce`, and then renders each season with its corresponding episodes as clickable links. Each episode 
+  includes an image and basic info like season and episode number.*/
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Episodes( {params} ){
-    const {id} = await params;
+    const {id} = await params;      // extract the show ID from route parameters
 
     const res = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
     const data = await res.json();
-    
+    // group episodes by season using a reducer
     const seasonGrouped = data.reduce((acc, episode) => {
         const season = episode.season;
-        //ako jos ne postoji niz za odredenu sezonu, prvo stvori prazan niz za tu sezonu pa onda dodaj epizode
+        // if this season doesn't exist in the accumulator yet, create a new array for it
         if(!acc[season]){
             acc[season] = [];
         }
-         //ako postoji niz za tu sezonu, dodaj epizodu u niz te sezone
+         // if there is a array of series for that season, add the episode to that season's array
         acc[season].push(episode);
         return acc;
-    }, {});
+    }, {});         // initial value is an empty object
 
     return(
         <main>
             <div className="flex flex-row justify-start flex-wrap">
-                {
+                {   // Object.entries() is used to iterate over the seasons object, because reduce returns an object and map() works only with arrays(does not work with objects) 
                     Object.entries(seasonGrouped).map(([key, value]) => (
                         <div key={key} className="flex flex-col gap-10">
                            <h2 className="text-2xl font-bold ml-14 mr-14"> Season {key}</h2>

@@ -1,7 +1,7 @@
+/* This component displays a data for single episode of selected tv show */
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
-
 
 export default async function SingleEpisode( {params} ) {
     const {episodeId} = await params;
