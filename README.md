@@ -25,37 +25,39 @@ ShowTrackr is a modern Next.js application for discovering TV shows, powered by 
 
 All these upgrades are planned for future versions of the application.
 
-## 🛠️ Technologies
+## Technologies
 
 - [Next.js 14](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [TVmaze API](https://www.tvmaze.com/api)
 - [Vercel](https://vercel.com/) for production hosting
 
-## 📦 Getting Started
-Za lokalno pokretanje projekta potrebno je:
-1. Klonirati repozitorij:
-    `git clone https:https://github.com/amrkonjic/ShowTrackr.git`
-    
-2. Ući u mapu projekta:
-    `cd show-trackr`
-    
-3. Instalirati ovisnosti:
-    `npm install`
-    
-4. Pokrenuti razvojni server:
-    `npm run dev`
-    
-Dodati .env datoteku s varijablom NEXT_PUBLIC_SITE_URL:
+## Getting Started
+To start the project locally, you need:
+1. Clone the repository: 
+`git clone https://github.com/amrkonjic/ShowTrackr.git`
+
+2. Enter the project folder: 
+`cd show-trackr`
+
+3. Install dependencies: 
+`npm install`
+
+4. Start the development server: 
+`npm run dev`
+
+Add the .env file with the NEXT_PUBLIC_SITE_URL variable:
 `NEXT_PUBLIC_SITE_URL=http://localhost:3000`
 
-Za build i deploy, potrebno je:
-1. Izgraditi aplikaciju za produkciju:
-    `npm run build`
-    
-2. Pokrenuti lokalni server za testiranje builda:
-    `npm run start`
-    
-3. Aplikacija je deployana na Vercel i dostupna putem adrese:
-    https://show-trackr.vercel.app/
+For build and deploy, you need:
+1. Build an application for production: 
+`npm run build`
 
+2. Start the local server for testing the build: 
+`npm run start'
+
+3. The application is deployed on Vercel and available via the address: 
+https://show-trackr.vercel.app/
+
+More detailed documentation (with notes about the design and submission of the project):
+https://boiled-packet-d4d.notion.site/Zavr-ni-projekt-JuniorDev-dokumentacija-1fdb0a75ac3c808aa2dff7708167400b
