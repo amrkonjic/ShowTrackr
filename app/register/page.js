@@ -32,7 +32,7 @@ export default function RegisterPage() {
       }
 
       setMessage('Register success! Check the confirmation email.')
-      setTimeout(() => router.push('/'), 2000)
+      setTimeout(() => router.push('/verify'), 1000)
     }
   }
 
