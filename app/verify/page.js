@@ -9,7 +9,7 @@ export default function VerifyPage() {
         Click that link to confirm your mail and activate profile.
       </p>
       <p className="text-sm text-gray-500 mt-4">
-        If you didn't get an email, check the spam folder. (Spam / Junk).
+        If you did not get an email, check the spam folder. (Spam / Junk).
       </p>
     </div>
   )
