@@ -28,8 +28,11 @@ export default function RegisterPage() {
     else {
     
       if (user) {
-        await supabase.from('profiles').update({ username }).eq('id', user.id)
+        await supabase.from('profiles').insert([
+          { id: user.id, username: username, email: user.email }
+        ])
       }
+
 
       setMessage('Register success! Check the confirmation email.')
       setTimeout(() => router.push('/verify'), 1000)
@@ -45,7 +48,7 @@ export default function RegisterPage() {
           placeholder="Korisničko ime"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 text-black"
           required
         />
         <input
@@ -53,7 +56,7 @@ export default function RegisterPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black"
           required
         />
         <input
@@ -61,7 +64,7 @@ export default function RegisterPage() {
           placeholder="Lozinka"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black"
           required
         />
         <button type="submit" className="bg-blue-600 text-white p-2 rounded">

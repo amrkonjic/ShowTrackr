@@ -20,7 +20,7 @@ export default function LoginPage() {
     })
 
     if (error) setError(error.message)
-    else router.push('/') 
+    else router.push('/profile') 
   }
 
   return (
@@ -32,7 +32,7 @@ export default function LoginPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black"
           required
         />
         <input
@@ -40,7 +40,7 @@ export default function LoginPage() {
           placeholder="Lozinka"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black"
           required
         />
         <button type="submit" className="bg-blue-600 text-white p-2 rounded">
