@@ -26,7 +26,7 @@ export default function ProfilePage() {
     setEmail(user.email);
 
     // Dohvati profil – ako ne postoji, bit će null
-    const { data: profileData, error } = await supabase
+    const { data: profileData } = await supabase
       .from('profiles')
       .select('username, avatar_url')
       .eq('id', user.id)
